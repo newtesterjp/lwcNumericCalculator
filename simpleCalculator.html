@@ -1,0 +1,41 @@
+<template>
+    <lightning-card>
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item size="12" padding="around-medium">
+                Number 1
+                <lightning-input name="num1" title="Enter Number1" onchange={numchang}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-medium">
+                Number2
+                <lightning-input name="num2" title="Enter Number2" onchange={numchang}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="2" padding="around-medium">
+                <lightning-button-group >
+                  <lightning-button  icon-name="utility:add" icon-position="center" label="add" onclick={add}></lightning-button>
+                  <lightning-button icon-name="utility:dash" icon-position="center" label="subtract" onclick={sub}></lightning-button>
+                  <lightning-button icon-name="utility:close" icon-position="center" label="Multiply" onclick={Multiply}></lightning-button>
+                </lightning-button-group>
+            </lightning-layout-item>
+            <lightning-layout-item size="12">
+                <lightning-formatted-text value={res}></lightning-formatted-text>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-medium">
+                <lightning-input type="checkbox" label="show Previous Results" onchange={showHistory}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-medium">
+                <template if:true={hisCheck}>
+                    <ul>
+                        <template iterator:it={his}>
+                           
+                            <li key={it.value}>
+                                <div if:true={it.first} class="slds-border_top"></div>
+                                 <lightning-formatted-text value={it.value}></lightning-formatted-text>
+                                 <div if:true={it.last} class="slds-border_bottom"></div>
+                            </li>
+                        </template>
+                    </ul>
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>
